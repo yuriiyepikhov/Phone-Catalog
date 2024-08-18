@@ -4,17 +4,9 @@
 .notFoundPage {
   @include content-padding-inline;
 
-  box-sizing: border-box;
-  height: 400px;
   padding-block: 24px;
 
-  background-image: url(../../../public/img/page-not-found.png);
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-
   @include on-tablet {
-    height: 550px;
     padding-block: 32px;
   }
 
@@ -34,5 +26,18 @@
   @include on-tablet {
     font-size: 48px;
     line-height: 56px;
+  }
+}
+
+.notFoundBackground {
+  height: 400px;
+
+  background-image: url(../../../public/img/page-not-found.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  @include on-tablet {
+    height: 550px;
   }
 }

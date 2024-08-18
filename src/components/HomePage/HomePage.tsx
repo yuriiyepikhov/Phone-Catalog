@@ -22,7 +22,7 @@ export const HomePage = () => {
 
       scrollToTop();
     }
-  });
+  }, []);
 
   const brandNewProducts = useMemo(
     () => getBrandNewProducts(products),

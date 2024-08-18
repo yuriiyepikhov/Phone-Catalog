@@ -53,7 +53,7 @@ export const ProductsPage: React.FC<Props> = ({
 
       scrollToTop();
     }
-  });
+  }, []);
 
   const totalProducts = products.length;
   const title = label === 'Phones' ? 'Mobile phones' : label;

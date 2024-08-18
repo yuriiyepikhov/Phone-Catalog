@@ -6,9 +6,12 @@ import './App.scss';
 
 export const App = () => (
   <div className="App">
-    <Header />
-    <Menu />
-    <Outlet />
+    <div>
+      <Header />
+      <Menu />
+      <Outlet />
+    </div>
+
     <Footer />
   </div>
 );

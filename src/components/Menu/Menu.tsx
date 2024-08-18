@@ -7,6 +7,7 @@ import {
   setIsMenuActive,
 } from '../../redux/slices/isMenuActiveSlice';
 import { AddActiveClass } from '../../types/AddActiveClass';
+import { Logo } from '../Logo';
 import { BarIcons } from '../BarIcons';
 import styles from './Menu.module.scss';
 
@@ -28,17 +29,13 @@ export const Menu = () => {
     <div className={classNames(styles.menu, { 'menu-active': isMenuActive })}>
       <div>
         <div className={styles.topBar}>
-          <div className={styles.logo}>
+          <div className={styles.logoWrapper}>
             <button
               type="button"
               className={styles.logoBtn}
               onClick={closeMenu}
             >
-              <img
-                className={styles.logoImg}
-                src="img/icons/logo.svg"
-                alt="Logo"
-              />
+              <Logo />
             </button>
           </div>
 

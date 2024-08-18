@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { useAppDispatch } from '../../redux/hooks';
 import { setIsMenuActive } from '../../redux/slices/isMenuActiveSlice';
 import { AddActiveClass } from '../../types/AddActiveClass';
-import { scrollToTop } from '../../utils/scrollToTop';
+import { Logo } from '../Logo';
 import { BarIcons } from '../BarIcons';
 import styles from './Header.module.scss';
 
@@ -19,12 +19,8 @@ export const Header = () => {
     <div className={styles.header}>
       <div className={styles.contentLeft}>
         <div className={styles.logoWrapper}>
-          <div className={styles.logo} onClick={scrollToTop}>
-            <img
-              className={styles.logoImg}
-              src="img/icons/logo.svg"
-              alt="Logo"
-            />
+          <div className={styles.logo}>
+            <Logo />
           </div>
         </div>
 

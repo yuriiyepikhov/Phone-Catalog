@@ -26,7 +26,7 @@ export const ShoppingCart = () => {
 
       scrollToTop();
     }
-  });
+  }, []);
 
   const totalItems = useMemo(() => countItems(cartItems), [cartItems]);
 

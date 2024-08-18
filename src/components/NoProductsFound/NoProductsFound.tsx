@@ -13,11 +13,7 @@ export const NoProductsFound: React.FC<Props> = ({
   inShoppingCart = false,
 }) => {
   return (
-    <div
-      className={classNames(styles.noProducts, {
-        [styles.emptyCart]: inShoppingCart,
-      })}
-    >
+    <div className={styles.noProductsFound}>
       <div
         className={classNames(styles.btnBack, {
           [styles.btnBackInCart]: inShoppingCart,
@@ -27,6 +23,12 @@ export const NoProductsFound: React.FC<Props> = ({
       </div>
 
       <p className={styles.noProductsText}>{title}</p>
+
+      <div
+        className={classNames(styles.background, {
+          [styles.backgroundCart]: inShoppingCart,
+        })}
+      />
     </div>
   );
 };

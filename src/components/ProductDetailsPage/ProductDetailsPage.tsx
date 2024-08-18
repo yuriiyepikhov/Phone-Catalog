@@ -129,6 +129,12 @@ export const ProductDetailsPage = () => {
   );
 
   useEffect(() => {
+    if (!preventScrollToTop.current) {
+      scrollToTop();
+    } else {
+      preventScrollToTop.current = false;
+    }
+
     if (!selectedProduct) {
       return;
     }
@@ -136,14 +142,6 @@ export const ProductDetailsPage = () => {
     setSelectedImg(selectedProduct.images[0]);
     setSelectedColor(selectedProduct.color);
     setSelectedCapacity(selectedProduct.capacity);
-
-    if (preventScrollToTop.current) {
-      preventScrollToTop.current = false;
-
-      return;
-    }
-
-    scrollToTop();
   }, [selectedProduct]);
 
   if (isLoading) {

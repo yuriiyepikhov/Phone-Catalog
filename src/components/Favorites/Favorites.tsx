@@ -19,7 +19,7 @@ export const Favorites = () => {
 
       scrollToTop();
     }
-  });
+  }, []);
 
   const favoritesQty = useMemo(
     () => countItems(favoritesItems),

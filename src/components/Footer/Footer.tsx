@@ -1,11 +1,12 @@
 import { scrollToTop } from '../../utils/scrollToTop';
+import { Logo } from '../Logo';
 import styles from './Footer.module.scss';
 
 export const Footer = () => (
   <div className={styles.footer}>
     <div className={styles.footerContent}>
-      <div className={styles.logo} onClick={scrollToTop}>
-        <img className={styles.logoImg} src="img/icons/logo.svg" alt="Logo" />
+      <div className={styles.logo}>
+        <Logo />
       </div>
 
       <div className={styles.links}>
