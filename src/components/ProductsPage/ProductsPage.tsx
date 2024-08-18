@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { useAppSelector } from '../../redux/hooks';
@@ -8,6 +8,7 @@ import { SortBy } from '../../types/SortBy';
 import { ItemsOnPage } from '../../types/ItemsOnPage';
 import { toCommonPropsProducts } from '../../utils/toCommonPropsProducts';
 import { getSortedProducts } from '../../utils/getSortedProducts';
+import { scrollToTop } from '../../utils/scrollToTop';
 import { ProductsList } from '../ProductsList';
 import { Pagination } from '../Pagination';
 import styles from './ProductsPage.module.scss';
@@ -43,6 +44,16 @@ export const ProductsPage: React.FC<Props> = ({
   const [perPageExpanded, setPerPageExpanded] = useState<boolean>(false);
   const { products: allProducts } = useAppSelector(selectProducts);
   const [searchParams, setSearchParams] = useSearchParams();
+
+  const firstRender = useRef<boolean>(true);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+
+      scrollToTop();
+    }
+  });
 
   const totalProducts = products.length;
   const title = label === 'Phones' ? 'Mobile phones' : label;

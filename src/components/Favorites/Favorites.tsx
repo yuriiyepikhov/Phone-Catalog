@@ -1,14 +1,25 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hooks';
 import { selectFavoritesItems } from '../../redux/slices/favoritesItemsSlice';
 import { countItems } from '../../utils/countItems';
+import { scrollToTop } from '../../utils/scrollToTop';
 import { ProductsList } from '../ProductsList';
 import styles from './Favorites.module.scss';
 
 export const Favorites = () => {
   const favoritesItems = useAppSelector(selectFavoritesItems);
   const favoritesProducts = favoritesItems.map(item => item.product);
+
+  const firstRender = useRef<boolean>(true);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+
+      scrollToTop();
+    }
+  });
 
   const favoritesQty = useMemo(
     () => countItems(favoritesItems),

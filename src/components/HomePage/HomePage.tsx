@@ -1,10 +1,11 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useAppSelector } from '../../redux/hooks';
 import { selectProducts } from '../../redux/slices/productsSlice';
 import {
   getBrandNewProducts,
   getHotPricesProducts,
 } from '../../utils/getSliderProducts';
+import { scrollToTop } from '../../utils/scrollToTop';
 import { PicturesSlider } from '../PicturesSlider';
 import { ProductsSlider } from '../ProductsSlider';
 import { ShopByCategory } from '../ShopByCategory';
@@ -12,6 +13,16 @@ import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
   const { products } = useAppSelector(selectProducts);
+
+  const firstRender = useRef<boolean>(true);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+
+      scrollToTop();
+    }
+  });
 
   const brandNewProducts = useMemo(
     () => getBrandNewProducts(products),

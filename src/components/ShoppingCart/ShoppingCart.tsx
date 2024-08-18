@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
@@ -6,6 +6,7 @@ import {
   selectCartItems,
 } from '../../redux/slices/cartItemsSlice';
 import { countItems } from '../../utils/countItems';
+import { scrollToTop } from '../../utils/scrollToTop';
 import { BackButton } from '../BackButton';
 import { CartItem } from '../CartItem';
 import { NoProductsFound } from '../NoProductsFound';
@@ -16,6 +17,16 @@ export const ShoppingCart = () => {
   const dispatch = useAppDispatch();
 
   const [isModalActive, setIsModalActive] = useState<boolean>(false);
+
+  const firstRender = useRef<boolean>(true);
+
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false;
+
+      scrollToTop();
+    }
+  });
 
   const totalItems = useMemo(() => countItems(cartItems), [cartItems]);
 
